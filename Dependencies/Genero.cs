@@ -13,7 +13,7 @@ namespace Cadastro_Series
             "Comedia"
         };
 
-        public string RetornarGenero(string genero)
+        public static string RetornarGenero(string genero)
         {
 
             if (Genero.listaGenero.Contains(genero))
@@ -23,7 +23,7 @@ namespace Cadastro_Series
             return $"Genero nao identificado{Environment.NewLine}";
         }
 
-        public string InserirGenero(string genero)
+        public static string InserirGenero(string genero)
         {
             if (Genero.listaGenero.Contains(genero))
             {
@@ -34,8 +34,16 @@ namespace Cadastro_Series
             return $"Genero adcionado com sucesso{Environment.NewLine}";
 
         }
+        public static bool BuscarGenero(string genero)
+        {
+            if (Genero.listaGenero.Contains(genero))
+            {
+                return true;
+            }
+            throw new Exception($"O Genero:{genero} nao contem na lista disponivel");
+        }
 
-        public string DeletarGenero(string genero)
+        public static string DeletarGenero(string genero)
         {
             if (Genero.listaGenero.Contains(genero))
             {
@@ -43,9 +51,7 @@ namespace Cadastro_Series
                 return $"Genero removido com sucesso{Environment.NewLine}";
             }
 
-            Genero.listaGenero.Add(genero);
-            return $"Genero adcionado com sucesso{Environment.NewLine}"; ;
-
+            return $"O genero{genero} nao esta presente na lista disponivel";
         }
 
     }

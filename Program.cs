@@ -6,8 +6,17 @@ namespace Cadastro_Series
     {
         static void Main(string[] args)
         {
-            Serie serie = new Serie(1, "TituloTeste", "DescricaoTeste");
-            Console.WriteLine(serie.toString());
+            while (true)
+            {
+                Serie serie = new Serie(1, "TituloTeste", "DescricaoTeste", 2021, "Terro");
+                Console.WriteLine(serie.toString());
+
+                Console.WriteLine("Digite: ");
+                if (Console.ReadLine() == "x")
+                {
+                    break;
+                }
+            }
         }
     }
 }
