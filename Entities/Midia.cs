@@ -4,12 +4,15 @@ namespace Cadastro_Series
     public abstract class Midia
     {
         protected int id { get; set; }
+        public int Id
+        {
+            get { return this.id; }
+        }
         protected string titulo { get; set; }
-        protected string descricao;
+        protected string descricao { get; set; }
         public string Descricao
         {
-            get { return descricao; }
-            set { descricao = value; }
+            get { return this.descricao; }
         }
         protected string genero { get; set; }
         protected int ano { get; set; }
