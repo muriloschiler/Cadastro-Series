@@ -34,13 +34,13 @@ namespace Cadastro_Series
             return $"Genero adcionado com sucesso{Environment.NewLine}";
 
         }
-        public static bool BuscarGenero(string genero)
+        public static bool ContemGenero(string genero)
         {
             if (Genero.listaGenero.Contains(genero))
             {
                 return true;
             }
-            throw new Exception($"O Genero:{genero} nao contem na lista disponivel");
+            throw new ArgumentException($"O Genero:{genero} nao contem na lista disponivel");
         }
 
         public static string DeletarGenero(string genero)

@@ -8,14 +8,22 @@ namespace Cadastro_Series
         {
             while (true)
             {
-                Serie serie = new Serie(1, "TituloTeste", "DescricaoTeste", 2021, "Terro");
-                Console.WriteLine(serie.toString());
+                try
+                {
+                    Serie serie = new Serie(1, "TituloTeste", "DescricaoTeste", 2021, "Terro");
+                    Console.WriteLine(serie.toString());
+                }
+                catch (ArgumentException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
                 Console.WriteLine("Digite: ");
                 if (Console.ReadLine() == "x")
                 {
                     break;
                 }
+
             }
         }
     }

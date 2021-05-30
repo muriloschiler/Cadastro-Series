@@ -7,23 +7,14 @@ namespace Cadastro_Series
 
         public Serie(int id, string titulo, string descricao, int ano, string genero)
         {
-
-            try
+            if (Genero.ContemGenero(genero))
             {
-                if (Genero.BuscarGenero(genero))
-                {
-                    this.genero = genero;
-                }
-                this.id = id;
-                this.titulo = titulo;
-                this.descricao = descricao;
-                this.ano = ano;
+                this.genero = genero;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
+            this.id = id;
+            this.titulo = titulo;
+            this.descricao = descricao;
+            this.ano = ano;
         }
     }
 }
