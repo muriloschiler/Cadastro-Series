@@ -61,5 +61,10 @@ namespace Cadastro_Series
             return $"O genero{genero} nao esta presente na lista disponivel";
         }
 
+        public static string RetornarGenero(string genero)
+        {
+
+            return Genero.listaGenero[int.Parse(genero)];
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cadastro_Series.Interfaces;
 
@@ -22,9 +23,12 @@ namespace Cadastro_Series
             listaSerie.Add(serie);
         }
 
-        public List<Serie> Listar()
+        public void Listar()
         {
-            return listaSerie;
+            foreach (Serie serie in listaSerie)
+            {
+                Console.WriteLine(serie.toString());
+            }
         }
 
         public int ProximoId()

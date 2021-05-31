@@ -4,10 +4,9 @@ namespace Cadastro_Series
 {
     class Program
     {
+        static SerieRepositorio serieRepositorio = new SerieRepositorio();
         static void Main(string[] args)
         {
-            SerieRepositorio serieRepositorio = new SerieRepositorio();
-
             var opcaoUsuario = OpcaoUsuario();
             while (opcaoUsuario != "X")
             {
@@ -15,10 +14,10 @@ namespace Cadastro_Series
                 {
 
                     case "1":
-                        //ListarSerie()
+                        ListarSerie();
                         break;
                     case "2":
-                        InserirSerie(serieRepositorio);
+                        InserirSerie();
                         break;
                     case "3":
                         //EditarSerie()
@@ -72,7 +71,7 @@ namespace Cadastro_Series
 
         }
 
-        private static void InserirSerie(SerieRepositorio serieRepositorio)
+        private static void InserirSerie()
         {
             try
             {
@@ -89,6 +88,7 @@ namespace Cadastro_Series
                 Serie serie = new Serie(titulo, descricao, ano, genero);
                 serieRepositorio.Inserir(serie);
                 Console.WriteLine("Serie Inserida com sucesso!!!");
+
             }
             catch (ArgumentException e)
             {
@@ -98,6 +98,10 @@ namespace Cadastro_Series
 
         }
 
+        private static void ListarSerie()
+        {
+            serieRepositorio.Listar();
+        }
 
     }
 }
