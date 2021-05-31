@@ -15,7 +15,7 @@ namespace Cadastro_Series
             get { return this.descricao; }
         }
         protected string genero { get; set; }
-        protected int ano { get; set; }
+        protected string ano { get; set; }
 
         public virtual string toString()
         {

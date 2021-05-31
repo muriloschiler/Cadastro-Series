@@ -6,7 +6,7 @@ namespace Cadastro_Series
     {
         static void Main(string[] args)
         {
-            List<Serie> listaSerie = new List<Serie>();
+            SerieRepositorio serieRepositorio = new SerieRepositorio();
 
             var opcaoUsuario = OpcaoUsuario();
             while (opcaoUsuario != "X")
@@ -18,7 +18,7 @@ namespace Cadastro_Series
                         //ListarSerie()
                         break;
                     case "2":
-                        //InserirSerie()
+                        InserirSerie(serieRepositorio);
                         break;
                     case "3":
                         //EditarSerie()
@@ -46,14 +46,15 @@ namespace Cadastro_Series
         {
             while (true)
             {
-                Console.WriteLine("Selecione uma opcao: ");
+                Console.WriteLine("##############################");
+                Console.WriteLine("MENU ");
                 Console.WriteLine("1 : Listar Series cadastradas ");
                 Console.WriteLine("2 : Inserir uma nova Serie ");
                 Console.WriteLine("3 : Editar uma Serie cadastrada ");
                 Console.WriteLine("4 : Exluir uma Serie cadastrada ");
                 Console.WriteLine("5 : Retornar uma Serie pelo seu ID ");
                 Console.WriteLine("6 : Retornar o proximo ID válido ");
-                Console.WriteLine("X : Retornar o proximo ID válido ");
+                Console.WriteLine("X : Sair do programa ");
                 string valor = Console.ReadLine().ToUpper();
 
                 if (valor == "X")
@@ -68,6 +69,32 @@ namespace Cadastro_Series
                 }
                 Console.WriteLine("Por favor Digite um valor valido");
             }
+
+        }
+
+        private static void InserirSerie(SerieRepositorio serieRepositorio)
+        {
+            try
+            {
+                Console.WriteLine("Informe o titulo da Serie");
+                string titulo = Console.ReadLine();
+                Console.WriteLine("Informe a descricao da Serie");
+                string descricao = Console.ReadLine();
+                Console.WriteLine("Informe o ano de lancamento da Serie");
+                string ano = Console.ReadLine();
+                Genero.ListarGenero();
+                string genero = Console.ReadLine();
+                Genero.ContemGenero(genero);
+
+                Serie serie = new Serie(titulo, descricao, ano, genero);
+                serieRepositorio.Inserir(serie);
+                Console.WriteLine("Serie Inserida com sucesso!!!");
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"{e.Message}");
+            }
+
 
         }
 

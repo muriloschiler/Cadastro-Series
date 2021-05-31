@@ -17,9 +17,9 @@ namespace Cadastro_Series
             throw new System.NotImplementedException();
         }
 
-        public void Inserir(Serie entidade)
+        public void Inserir(Serie serie)
         {
-
+            listaSerie.Add(serie);
         }
 
         public List<Serie> Listar()
