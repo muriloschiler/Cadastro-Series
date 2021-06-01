@@ -147,17 +147,41 @@ namespace Cadastro_Series
 
         private static void AtualizarSerie()
         {
-            Console.Write("Digite o Id ou o titulo da serie a ser atualizada: ");
+
+            Console.WriteLine("Selecione como sera selecionada a serie a ser editada: ");
             Console.WriteLine($"{Environment.NewLine}");
-            string busca = Console.ReadLine();
             Serie serie = null;
-            if (int.TryParse(busca, out int intBusca))
+            while (true)
             {
-                serie = serieRepositorio.RetornarPorId(intBusca);
-            }
-            else
-            {
-                serie = serieRepositorio.RetornarPorTitulo(busca);
+                Console.WriteLine("Selecionar por Id: 1 ");
+                Console.WriteLine("Selecionar por Titulo: 2 ");
+                Console.WriteLine("Voltar: 3");
+                string escolha = Console.ReadLine();
+
+                //Verificando a entrada do usuario
+                if (!int.TryParse(escolha, out int resultado)
+                    | int.Parse(escolha) > 3
+                    | int.Parse(escolha) < 1)
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+
+                //Decidindo qual metodo de busca sera utilizado
+                int escolhaInt = int.Parse(escolha);
+                if (escolhaInt == 1)
+                {
+                    Console.WriteLine("Digite o Id da Serie: ");
+                    int buscaId = int.Parse(Console.ReadLine());
+                    serie = serieRepositorio.RetornarPorId(buscaId);
+                }
+                if (escolhaInt == 2)
+                {
+                    Console.WriteLine("Digite o Titulo da Serie: ");
+                    string buscaTitulo = Console.ReadLine();
+                    serie = serieRepositorio.RetornarPorTitulo(buscaTitulo);
+                }
+                break;
             }
 
             if (serie != null)
@@ -248,3 +272,4 @@ namespace Cadastro_Series
     }
 
 }
+
