@@ -5,6 +5,7 @@ namespace Cadastro_Series.Interfaces
     {
         void Listar();
         T RetornarPorId(int id);
+        T RetornarPorTitulo(string titulo);
         void Inserir(T entidade);
         void Excluir(string titulo);
         void Atualizar(string titulo, T entidade);

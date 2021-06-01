@@ -15,5 +15,7 @@ namespace Cadastro_Series
 
             ++autoIncrementId;
         }
+
+        //public Atualiza(){}
     }
 }

@@ -38,7 +38,27 @@ namespace Cadastro_Series
 
         public Serie RetornarPorId(int id)
         {
-            throw new System.NotImplementedException();
+            foreach (Serie serie in this.listaSerie)
+            {
+                if (serie.Id == id)
+                {
+                    return serie;
+                }
+            }
+            Console.WriteLine("Id nao encontrado");
+            return null;
+        }
+        public Serie RetornarPorTitulo(string titulo)
+        {
+            foreach (Serie serie in this.listaSerie)
+            {
+                if (serie.Titulo == titulo)
+                {
+                    return serie;
+                }
+            }
+            Console.WriteLine("Titulo nao encontrado");
+            return null;
         }
     }
 }
