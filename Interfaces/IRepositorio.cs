@@ -8,8 +8,6 @@ namespace Cadastro_Series.Interfaces
         T RetornarPorTitulo(string titulo);
         void Inserir(T entidade);
         void Excluir(string titulo);
-        void Atualizar(string titulo, T entidade);
-        int ProximoId();
-
+        void Atualizar(T entidade, string titulo, string descricao, string ano, string genero);
     }
 }

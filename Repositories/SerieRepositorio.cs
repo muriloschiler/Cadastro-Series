@@ -8,9 +8,9 @@ namespace Cadastro_Series
     {
 
         private List<Serie> listaSerie = new List<Serie>();
-        public void Atualizar(string titulo, Serie entidade)
+        public void Atualizar(Serie serie, String titulo, string descricao, string ano, string genero)
         {
-            throw new System.NotImplementedException();
+            serie.Atualizar(titulo, descricao, ano, genero);
         }
 
         public void Excluir(string titulo)
@@ -30,12 +30,6 @@ namespace Cadastro_Series
                 Console.WriteLine(serie.toString());
             }
         }
-
-        public int ProximoId()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public Serie RetornarPorId(int id)
         {
             foreach (Serie serie in this.listaSerie)

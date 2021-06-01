@@ -24,6 +24,7 @@ namespace Cadastro_Series
                 i++;
 
             }
+            Console.Write($"{Environment.NewLine}");
         }
         public static string InserirGenero(string genero)
         {
@@ -45,9 +46,12 @@ namespace Cadastro_Series
                 {
                     return true;
                 }
-                throw new ArgumentException($"O Indice:{resultado} nao contem na lista disponivel");
+
+                Console.WriteLine($"O Indice:{resultado} nao contem na lista disponivel");
+                return false;
             }
-            throw new ArgumentException($"Escreva um indice valido");
+            Console.WriteLine($"Escreva um indice valido");
+            return false;
         }
 
         public static string DeletarGenero(string genero)

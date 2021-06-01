@@ -16,6 +16,12 @@ namespace Cadastro_Series
             ++autoIncrementId;
         }
 
-        //public Atualiza(){}
+        public void Atualizar(string titulo, string descricao, string ano, string genero)
+        {
+            this.titulo = titulo;
+            this.descricao = descricao;
+            this.ano = ano;
+            this.genero = genero;
+        }
     }
 }

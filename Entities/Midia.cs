@@ -14,8 +14,20 @@ namespace Cadastro_Series
             get { return this.titulo; }
         }
         protected string descricao { get; set; }
+        public string Descricao
+        {
+            get { return this.descricao; }
+        }
         protected string genero { get; set; }
+        public string GENERO
+        {
+            get { return this.genero; }
+        }
         protected string ano { get; set; }
+        public string Ano
+        {
+            get { return this.ano; }
+        }
 
         public virtual string toString()
         {
