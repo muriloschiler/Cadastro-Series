@@ -7,7 +7,7 @@ namespace Cadastro_Series.Interfaces
         T RetornarPorId(int id);
         T RetornarPorTitulo(string titulo);
         void Inserir(T entidade);
-        void Excluir(string titulo);
+        void Excluir(T entidade);
         void Atualizar(T entidade, string titulo, string descricao, string ano, string genero);
     }
 }

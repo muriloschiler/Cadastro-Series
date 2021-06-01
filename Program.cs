@@ -23,7 +23,7 @@ namespace Cadastro_Series
                         AtualizarSerie();
                         break;
                     case "4":
-                        //ExcluirSerie()
+                        ExcluirSerie();
                         break;
                     case "5":
                         VisualizarSerie();
@@ -148,7 +148,7 @@ namespace Cadastro_Series
         private static void AtualizarSerie()
         {
 
-            Console.WriteLine("Selecione como sera selecionada a serie a ser editada: ");
+            Console.WriteLine("Metodos de busca: ");
             Console.WriteLine($"{Environment.NewLine}");
             Serie serie = null;
             while (true)
@@ -269,7 +269,55 @@ namespace Cadastro_Series
             }
         }
 
-    }
+        private static void ExcluirSerie()
+        {
+            Console.WriteLine("Metodos de busca: ");
+            Console.WriteLine($"{Environment.NewLine}");
+            Serie serie = null;
+            while (true)
+            {
+                Console.WriteLine("Selecionar Serie por Id: 1 ");
+                Console.WriteLine("Selecionar Serie por Titulo: 2 ");
+                Console.WriteLine("Voltar: 3");
+                string escolha = Console.ReadLine();
 
+                //Verificando a entrada do usuario
+                if (!int.TryParse(escolha, out int resultado)
+                    | int.Parse(escolha) > 3
+                    | int.Parse(escolha) < 1)
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+
+                //Decidindo qual metodo de busca sera utilizado
+                int escolhaInt = int.Parse(escolha);
+                if (escolhaInt == 1)
+                {
+                    Console.WriteLine("Digite o Id da Serie que sera excluida: ");
+                    int buscaId = int.Parse(Console.ReadLine());
+                    serie = serieRepositorio.RetornarPorId(buscaId);
+                    if (serie != null)
+                    {
+                        serieRepositorio.Excluir(serie);
+                        Console.WriteLine("Serie excluida!!");
+                    }
+                }
+                if (escolhaInt == 2)
+                {
+                    Console.WriteLine("Digite o Titulo da Serie que sera excluida: ");
+                    string buscaTitulo = Console.ReadLine();
+                    serie = serieRepositorio.RetornarPorTitulo(buscaTitulo);
+                    if (serie != null)
+                    {
+                        serieRepositorio.Excluir(serie);
+                        Console.WriteLine("Serie excluida!!");
+                    }
+                }
+                break;
+            }
+        }
+
+    }
 }
 

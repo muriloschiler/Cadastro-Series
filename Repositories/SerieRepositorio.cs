@@ -13,9 +13,9 @@ namespace Cadastro_Series
             serie.Atualizar(titulo, descricao, ano, genero);
         }
 
-        public void Excluir(string titulo)
+        public void Excluir(Serie serie)
         {
-            throw new System.NotImplementedException();
+            listaSerie.Remove(serie);
         }
 
         public void Inserir(Serie serie)
