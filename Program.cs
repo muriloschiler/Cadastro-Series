@@ -28,6 +28,9 @@ namespace Cadastro_Series
                     case "5":
                         VisualizarSerie();
                         break;
+                    case "6":
+                        Console.Clear();
+                        break;
 
                 }
                 opcaoUsuario = OpcaoUsuario();
@@ -47,6 +50,7 @@ namespace Cadastro_Series
                 Console.WriteLine("3 : Editar uma Serie cadastrada ");
                 Console.WriteLine("4 : Exluir uma Serie cadastrada ");
                 Console.WriteLine("5 : Visualizar uma serie especifica");
+                Console.WriteLine("6 : Limpar tela");
                 Console.WriteLine("X : Sair do programa ");
                 string valor = Console.ReadLine().ToUpper();
 
@@ -56,7 +60,7 @@ namespace Cadastro_Series
                 }
                 //verifico se o valor e numerico e se esta no intervalo determinado
                 if (int.TryParse(valor, out int result) &&
-                    int.Parse(valor) <= 5 && int.Parse(valor) >= 1)
+                    int.Parse(valor) <= 6 && int.Parse(valor) >= 1)
                 {
                     return valor;
                 }
