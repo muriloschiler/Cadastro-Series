@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 namespace Cadastro_Series.Interfaces
 {
     public interface IRepositorio<T>
