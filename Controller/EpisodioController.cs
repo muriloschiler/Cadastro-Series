@@ -1,30 +1,28 @@
 using System;
 namespace Cadastro_Series
 {
-    public class SerieController : ControllerAbstract
+    public class EpisodioController : ControllerAbstract
     {
-
-        private SerieRepositorio serieRepositorio = new SerieRepositorio();
-
-        public SerieController() { }
-
+        private EpisodioRepositorio episodioRepositorio = new EpisodioRepositorio();
+        public EpisodioController() { }
         public override void Run()
         {
             base.Run();
         }
+
         public override string OpcaoUsuario()
         {
             while (true)
             {
                 Console.WriteLine("##############################");
-                Console.WriteLine("MENU Series ");
-                Console.WriteLine("1 : Listar Series cadastradas ");
-                Console.WriteLine("2 : Inserir uma nova Serie ");
-                Console.WriteLine("3 : Editar uma Serie cadastrada ");
-                Console.WriteLine("4 : Exluir uma Serie cadastrada ");
-                Console.WriteLine("5 : Visualizar uma serie especifica");
+                Console.WriteLine("MENU Episodios ");
+                Console.WriteLine("1 : Listar Episodios cadastrados ");
+                Console.WriteLine("2 : Inserir um novo Episodio ");
+                Console.WriteLine("3 : Editar um Episodio cadastrado ");
+                Console.WriteLine("4 : Exluir um Episodio cadastrado ");
+                Console.WriteLine("5 : Visualizar um Episodio especifico");
                 Console.WriteLine("6 : Limpar tela");
-                Console.WriteLine("X : Sair de Series ");
+                Console.WriteLine("X : Sair de Episodios ");
                 string valor = Console.ReadLine().ToUpper();
 
                 if (valor == "X")
@@ -45,33 +43,23 @@ namespace Cadastro_Series
 
         public override void InserirEntidade()
         {
-            Console.WriteLine("Informe o titulo da Serie");
+            Console.WriteLine("Informe o titulo do Episodio");
             string titulo = Console.ReadLine();
-            Console.WriteLine("Informe a descricao da Serie");
+            Console.WriteLine("Informe a descricao do Episodio");
             string descricao = Console.ReadLine();
-            Console.WriteLine("Informe o ano de lancamento da Serie");
-            string ano = Console.ReadLine();
-            string genero = "";
-            while (true)
-            {
-                Genero.ListarGenero();
-                genero = Console.ReadLine();
-                if (Genero.ContemGenero(genero))
-                {
-                    break;
-                }
-            }
-            Serie serie = new Serie(titulo, descricao, ano, genero);
-            serieRepositorio.Inserir(serie);
-            Console.WriteLine("Serie inserida com sucesso!!!");
+            Episodio episodio = new Episodio(titulo, descricao);
+            episodioRepositorio.Inserir(episodio);
+            Console.WriteLine("Episodio inserido com sucesso!!!");
             Console.WriteLine($"{Environment.NewLine}");
+
         }
 
         public override void ListarEntidade()
         {
-            Console.WriteLine("SERIES CADASTRADAS:");
-            serieRepositorio.Listar();
+            Console.WriteLine("EPISODIOS CADASTRADOS:");
+            episodioRepositorio.Listar();
         }
+
         public override void VisualizarEntidade()
         {
             Console.WriteLine("Selecione o metodo de busca: ");
@@ -95,24 +83,24 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Informe o Id da serie: ");
+                    Console.WriteLine("Informe o Id do episodio: ");
                     int id = int.Parse(Console.ReadLine());
-                    Serie serie = serieRepositorio.RetornarPorId(id);
-                    if (serie != null)
+                    Episodio episodio = episodioRepositorio.RetornarPorId(id);
+                    if (episodio != null)
                     {
-                        Console.WriteLine("Serie:");
-                        Console.WriteLine(serie.toString());
+                        Console.WriteLine("Episodio:");
+                        Console.WriteLine(episodio.toString());
                         break;
                     }
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Informe o titulo da serie: ");
-                    Serie serie = serieRepositorio.RetornarPorTitulo(Console.ReadLine());
-                    if (serie != null)
+                    Console.WriteLine("Informe o titulo do episodio: ");
+                    Episodio episodio = episodioRepositorio.RetornarPorTitulo(Console.ReadLine());
+                    if (episodio != null)
                     {
                         Console.WriteLine("Serie:");
-                        Console.WriteLine(serie.toString());
+                        Console.WriteLine(episodio.toString());
                         break;
                     }
                 }
@@ -125,11 +113,11 @@ namespace Cadastro_Series
         {
             Console.WriteLine("Metodos de busca: ");
             Console.WriteLine($"{Environment.NewLine}");
-            Serie serie = null;
+            Episodio episodio = null;
             while (true)
             {
-                Console.WriteLine("Selecionar serie por Id: 1 ");
-                Console.WriteLine("Selecionar serie por Titulo: 2 ");
+                Console.WriteLine("Selecionar episodio por Id: 1 ");
+                Console.WriteLine("Selecionar episodio por Titulo: 2 ");
                 Console.WriteLine("Voltar: 3");
                 string escolha = Console.ReadLine();
 
@@ -146,26 +134,24 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id da Serie: ");
+                    Console.WriteLine("Digite o Id do episodio: ");
                     int buscaId = int.Parse(Console.ReadLine());
-                    serie = serieRepositorio.RetornarPorId(buscaId);
+                    episodio = episodioRepositorio.RetornarPorId(buscaId);
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Digite o Titulo da Serie: ");
+                    Console.WriteLine("Digite o Titulo do episodio: ");
                     string buscaTitulo = Console.ReadLine();
-                    serie = serieRepositorio.RetornarPorTitulo(buscaTitulo);
+                    episodio = episodioRepositorio.RetornarPorTitulo(buscaTitulo);
                 }
                 break;
             }
 
-            if (serie != null)
+            if (episodio != null)
             {
 
-                string titulo = serie.Titulo;
-                string descricao = serie.Descricao;
-                string ano = serie.Ano;
-                string genero = serie.GENERO;
+                string titulo = episodio.Titulo;
+                string descricao = episodio.Descricao;
                 //MODIFICAR O TITULO
                 while (true)
                 {
@@ -200,47 +186,7 @@ namespace Cadastro_Series
                     }
                     Console.WriteLine("Por favor digite Y/N");
                 }
-                //MODIFICAR O ANO
-                while (true)
-                {
-                    Console.WriteLine("Deseja atualizar o ano? Y/N: ");
-                    string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
-                    {
-                        Console.WriteLine("Digite o novo ano: ");
-                        descricao = Console.ReadLine();
-                        break;
-                    }
-                    if (decisao.ToUpper() == "N")
-                    {
-                        break;
-                    }
-                    Console.WriteLine("Por favor digite Y/N");
-                }
-                //MODIFICAR O GENERO    
-                string generoTemp = "";
-                while (true)
-                {
-                    Console.WriteLine("Deseja atualizar o genero? Y/N: ");
-                    string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
-                    {
-                        Genero.ListarGenero();
-                        generoTemp = Console.ReadLine();
-                        if (!Genero.ContemGenero(generoTemp))
-                        {
-                            continue;
-                        }
-                        genero = generoTemp;
-                        break;
-                    }
-                    if (decisao.ToUpper() == "N")
-                    {
-                        break;
-                    }
-                    Console.WriteLine("Por favor digite Y/N");
-                }
-                serieRepositorio.Atualizar(serie, titulo, descricao, ano, genero);
+                episodioRepositorio.Atualizar(episodio, titulo, descricao);
             }
 
         }
@@ -249,11 +195,11 @@ namespace Cadastro_Series
         {
             Console.WriteLine("Metodos de busca: ");
             Console.WriteLine($"{Environment.NewLine}");
-            Serie serie = null;
+            Episodio episodio = null;
             while (true)
             {
-                Console.WriteLine("Selecionar Serie por Id: 1 ");
-                Console.WriteLine("Selecionar Serie por Titulo: 2 ");
+                Console.WriteLine("Selecionar episodio por Id: 1 ");
+                Console.WriteLine("Selecionar episodio por Titulo: 2 ");
                 Console.WriteLine("Voltar: 3");
                 string escolha = Console.ReadLine();
 
@@ -270,29 +216,30 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id da Serie que sera excluida: ");
+                    Console.WriteLine("Digite o Id do episodio que sera excluido: ");
                     int buscaId = int.Parse(Console.ReadLine());
-                    serie = serieRepositorio.RetornarPorId(buscaId);
-                    if (serie != null)
+                    episodio = episodioRepositorio.RetornarPorId(buscaId);
+                    if (episodio != null)
                     {
-                        serieRepositorio.Excluir(serie);
-                        Console.WriteLine("Serie excluida!!");
+                        episodioRepositorio.Excluir(episodio);
+                        Console.WriteLine("Episodio excluido!!");
                     }
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Digite o Titulo da Serie que sera excluida: ");
+                    Console.WriteLine("Digite o Titulo do episodio que sera excluido: ");
                     string buscaTitulo = Console.ReadLine();
-                    serie = serieRepositorio.RetornarPorTitulo(buscaTitulo);
-                    if (serie != null)
+                    episodio = episodioRepositorio.RetornarPorTitulo(buscaTitulo);
+                    if (episodio != null)
                     {
-                        serieRepositorio.Excluir(serie);
-                        Console.WriteLine("Serie excluida!!");
+                        episodioRepositorio.Excluir(episodio);
+                        Console.WriteLine("Episodio excluida!!");
                     }
                 }
                 break;
             }
         }
-    }
 
+
+    }
 }

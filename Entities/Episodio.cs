@@ -1,7 +1,7 @@
 using System;
 namespace Cadastro_Series
 {
-    public class Episodio : Midia
+    public class Episodio : Etidade
     {
         static int autoIncrementId = 1;
 

@@ -13,19 +13,19 @@ namespace Cadastro_Series
                 {
 
                     case "1":
-                        this.ListarSerie();
+                        this.ListarEntidade();
                         break;
                     case "2":
-                        this.InserirSerie();
+                        this.InserirEntidade();
                         break;
                     case "3":
-                        this.AtualizarSerie();
+                        this.AtualizarEntidade();
                         break;
                     case "4":
-                        this.ExcluirSerie();
+                        this.ExcluirEntidade();
                         break;
                     case "5":
-                        this.VisualizarSerie();
+                        this.VisualizarEntidade();
                         break;
                     case "6":
                         Console.Clear();
@@ -39,23 +39,23 @@ namespace Cadastro_Series
         {
             throw new NotImplementedException();
         }
-        public virtual void InserirSerie()
+        public virtual void InserirEntidade()
         {
             throw new NotImplementedException();
         }
-        public virtual void ListarSerie()
+        public virtual void ListarEntidade()
         {
             throw new NotImplementedException();
         }
-        public virtual void VisualizarSerie()
+        public virtual void VisualizarEntidade()
         {
             throw new NotImplementedException();
         }
-        public virtual void AtualizarSerie()
+        public virtual void AtualizarEntidade()
         {
             throw new NotImplementedException();
         }
-        public virtual void ExcluirSerie()
+        public virtual void ExcluirEntidade()
         {
             throw new NotImplementedException();
         }

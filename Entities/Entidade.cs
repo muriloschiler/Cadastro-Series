@@ -1,7 +1,7 @@
 using System;
 namespace Cadastro_Series
 {
-    public abstract class Midia
+    public abstract class Etidade
     {
         protected int id { get; set; }
         public int Id

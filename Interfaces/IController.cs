@@ -4,11 +4,11 @@ namespace Cadastro_Series.Interfaces
     {
         void Run();
         string OpcaoUsuario();
-        void InserirSerie();
+        void InserirEntidade();
 
-        void ListarSerie();
-        void VisualizarSerie();
-        void AtualizarSerie();
-        void ExcluirSerie();
+        void ListarEntidade();
+        void VisualizarEntidade();
+        void AtualizarEntidade();
+        void ExcluirEntidade();
     }
 }

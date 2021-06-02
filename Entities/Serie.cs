@@ -2,7 +2,7 @@ using System;
 
 namespace Cadastro_Series
 {
-    public class Serie : Midia
+    public class Serie : Etidade
     {
 
         static int autoIncrementId = 1;
