@@ -4,11 +4,11 @@ using Cadastro_Series.Interfaces;
 
 namespace Cadastro_Series
 {
-    public class SerieRepositorio : IRepositorio<Serie>
+    public class SerieRepositorio : ISerieRepositorio
     {
 
         private List<Serie> listaSerie = new List<Serie>();
-        public void Atualizar(Serie serie, String titulo, string descricao, string ano, string genero)
+        public void Atualizar(Serie serie, string titulo, string descricao, string ano, string genero)
         {
             serie.Atualizar(titulo, descricao, ano, genero);
         }
