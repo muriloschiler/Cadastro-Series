@@ -47,7 +47,7 @@ namespace Cadastro_Series
             string titulo = Console.ReadLine();
             Console.WriteLine("Informe a descricao da temporada");
             string descricao = Console.ReadLine();
-            Temporada temporada = new Temporada(titulo, descricao, 0);
+            Temporada temporada = new Temporada(titulo, descricao);
             temporadaRepositorio.Inserir(temporada);
             Console.WriteLine($"{Environment.NewLine}");
             Console.WriteLine("Temporada inserida com sucesso!!!");
@@ -90,7 +90,11 @@ namespace Cadastro_Series
                     {
                         Console.WriteLine("Temporada:");
                         Console.WriteLine(temporada.toString());
-                        break;
+                        Console.WriteLine("Deseja acessar seus episodios ?");
+                        if (Console.ReadLine().ToUpper() == "S")
+                        {
+                            temporada.episodioController.Run();
+                        }
                     }
                 }
                 if (escolhaInt == 2)
@@ -101,7 +105,11 @@ namespace Cadastro_Series
                     {
                         Console.WriteLine("Temporada:");
                         Console.WriteLine(temporada.toString());
-                        break;
+                        Console.WriteLine("Deseja acessar seus episodios ?");
+                        if (Console.ReadLine().ToUpper() == "S")
+                        {
+                            temporada.episodioController.Run();
+                        }
                     }
                 }
                 break;

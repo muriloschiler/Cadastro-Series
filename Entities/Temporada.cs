@@ -1,9 +1,11 @@
 using Cadastro_Series.Interfaces;
+using Cadastro_Series.Factorys;
 using System;
 namespace Cadastro_Series
 {
     public class Temporada : Entidade, ITemporada
     {
+        public IController episodioController = ControllerFactory.CreateController(ControllerType.Episodio);
         static int autoIncrementId = 1;
         private int numeroEpisodios;
         public int NumeroEpisodios
@@ -12,12 +14,11 @@ namespace Cadastro_Series
             set { this.numeroEpisodios = value; }
         }
 
-        public Temporada(string titulo, string descricao, int numeroEpisodios)
+        public Temporada(string titulo, string descricao)
         {
             this.id = autoIncrementId;
             this.titulo = titulo;
             this.descricao = descricao;
-            this.numeroEpisodios = numeroEpisodios;
             ++Serie.numeroTemporadas;
             ++autoIncrementId;
         }

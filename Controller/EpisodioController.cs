@@ -47,8 +47,8 @@ namespace Cadastro_Series
             string titulo = Console.ReadLine();
             Console.WriteLine("Informe a descricao do Episodio");
             string descricao = Console.ReadLine();
-            //Episodio episodio = new Episodio(titulo, descricao);
-            //episodioRepositorio.Inserir(episodio);
+            Episodio episodio = new Episodio(titulo, descricao);
+            episodioRepositorio.Inserir(episodio);
             Console.WriteLine("Episodio inserido com sucesso!!!");
             Console.WriteLine($"{Environment.NewLine}");
 
@@ -186,7 +186,7 @@ namespace Cadastro_Series
                     }
                     Console.WriteLine("Por favor digite Y/N");
                 }
-                //episodioRepositorio.Atualizar(episodio, titulo, descricao);
+                episodioRepositorio.Atualizar(episodio, titulo, descricao);
             }
 
         }

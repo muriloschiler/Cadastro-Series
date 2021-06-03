@@ -5,28 +5,25 @@ namespace Cadastro_Series
     public class Episodio : Entidade, IEpisodio
     {
         static int autoIncrementId = 1;
-        private Temporada temporada;
-        public Episodio(string titulo, string descricao, Temporada temporada)
+        public Episodio(string titulo, string descricao)
         {
             this.id = autoIncrementId;
             this.titulo = titulo;
             this.descricao = descricao;
-            this.temporada = temporada;
             ++autoIncrementId;
         }
 
-        public void Atualizar(string titulo, string descricao, Temporada temporada)
+        public void Atualizar(string titulo, string descricao)
         {
             this.titulo = titulo;
             this.descricao = descricao;
-            this.temporada = temporada;
+
         }
 
         public override string toString()
         {
             base.toString();
             string texto = "";
-            texto += $"{this.temporada}";
             texto += $"{Environment.NewLine}";
             return texto;
         }
