@@ -25,12 +25,11 @@ namespace Cadastro_Series
                         this.ExcluirEntidade();
                         break;
                     case "5":
-                        this.VisualizarEntidade();
+                        this.SelecionarEntidade();
                         break;
                     case "6":
                         Console.Clear();
                         break;
-
                 }
                 opcaoUsuario = this.OpcaoUsuario();
             }
@@ -47,7 +46,7 @@ namespace Cadastro_Series
         {
             throw new NotImplementedException();
         }
-        public virtual void VisualizarEntidade()
+        public virtual void SelecionarEntidade()
         {
             throw new NotImplementedException();
         }

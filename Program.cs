@@ -1,4 +1,5 @@
 ﻿using System;
+using Cadastro_Series.Interfaces;
 using Cadastro_Series.Factorys;
 namespace Cadastro_Series
 {
@@ -8,7 +9,7 @@ namespace Cadastro_Series
         {
             try
             {
-                var serieController = ControllerFactory.CreateController(ControllerType.Serie);
+                IController serieController = ControllerFactory.CreateController(ControllerType.Serie);
 
                 Console.WriteLine("Seja bem vindo a plataforma de Series e Filmes");
                 while (true)

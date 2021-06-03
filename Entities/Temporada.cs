@@ -18,6 +18,7 @@ namespace Cadastro_Series
             this.titulo = titulo;
             this.descricao = descricao;
             this.numeroEpisodios = numeroEpisodios;
+            ++Serie.numeroTemporadas;
             ++autoIncrementId;
         }
 
@@ -31,7 +32,7 @@ namespace Cadastro_Series
         {
             base.toString();
             string texto = "";
-            texto += $"{this.numeroEpisodios}";
+            texto += $"Numero de episodios:{this.numeroEpisodios}";
             texto += $"{Environment.NewLine}";
             return texto;
         }

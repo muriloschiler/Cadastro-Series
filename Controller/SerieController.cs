@@ -22,7 +22,7 @@ namespace Cadastro_Series
                 Console.WriteLine("2 : Inserir uma nova Serie ");
                 Console.WriteLine("3 : Editar uma Serie cadastrada ");
                 Console.WriteLine("4 : Exluir uma Serie cadastrada ");
-                Console.WriteLine("5 : Visualizar uma serie especifica");
+                Console.WriteLine("5 : Selecionar uma serie especifica");
                 Console.WriteLine("6 : Limpar tela");
                 Console.WriteLine("X : Sair de Series ");
                 string valor = Console.ReadLine().ToUpper();
@@ -62,6 +62,9 @@ namespace Cadastro_Series
                 }
             }
             Serie serie = new Serie(titulo, descricao, ano, genero);
+            Console.WriteLine("Agora defina as informacoes da primeria temporada:");
+            //Definindo a primeria temporada
+            serie.temporadaController.InserirEntidade();
             serieRepositorio.Inserir(serie);
             Console.WriteLine("Serie inserida com sucesso!!!");
             Console.WriteLine($"{Environment.NewLine}");
@@ -72,7 +75,7 @@ namespace Cadastro_Series
             Console.WriteLine("SERIES CADASTRADAS:");
             serieRepositorio.Listar();
         }
-        public override void VisualizarEntidade()
+        public override void SelecionarEntidade()
         {
             Console.WriteLine("Selecione o metodo de busca: ");
             while (true)
@@ -102,7 +105,11 @@ namespace Cadastro_Series
                     {
                         Console.WriteLine("Serie:");
                         Console.WriteLine(serie.toString());
-                        break;
+                        Console.WriteLine("Deseja acessar suas temporadas ?");
+                        if (Console.ReadLine().ToUpper() == "S")
+                        {
+                            serie.temporadaController.Run();
+                        }
                     }
                 }
                 if (escolhaInt == 2)
@@ -113,7 +120,11 @@ namespace Cadastro_Series
                     {
                         Console.WriteLine("Serie:");
                         Console.WriteLine(serie.toString());
-                        break;
+                        Console.WriteLine("Deseja acessar suas temporadas ?");
+                        if (Console.ReadLine().ToUpper() == "S")
+                        {
+                            serie.temporadaController.Run();
+                        }
                     }
                 }
                 break;

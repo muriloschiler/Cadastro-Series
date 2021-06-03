@@ -14,13 +14,13 @@ namespace Cadastro_Series
         {
             while (true)
             {
-                Console.WriteLine("##############################");
+
                 Console.WriteLine("MENU Temporadas ");
                 Console.WriteLine("1 : Listar temporadas cadastradas ");
                 Console.WriteLine("2 : Inserir uma nova temporada ");
                 Console.WriteLine("3 : Editar uma temporada cadastrada ");
                 Console.WriteLine("4 : Exluir uma temporada cadastrada ");
-                Console.WriteLine("5 : Visualizar uma temporada especifica");
+                Console.WriteLine("5 : Selecionar uma temporada especifica");
                 Console.WriteLine("6 : Limpar tela");
                 Console.WriteLine("X : Sair de temporada ");
                 string valor = Console.ReadLine().ToUpper();
@@ -49,8 +49,8 @@ namespace Cadastro_Series
             string descricao = Console.ReadLine();
             Temporada temporada = new Temporada(titulo, descricao, 0);
             temporadaRepositorio.Inserir(temporada);
-            Console.WriteLine("Temporada inserida com sucesso!!!");
             Console.WriteLine($"{Environment.NewLine}");
+            Console.WriteLine("Temporada inserida com sucesso!!!");
         }
 
 
@@ -60,7 +60,7 @@ namespace Cadastro_Series
             temporadaRepositorio.Listar();
         }
 
-        public override void VisualizarEntidade()
+        public override void SelecionarEntidade()
         {
             Console.WriteLine("Selecione o metodo de busca: ");
             while (true)

@@ -7,7 +7,7 @@ namespace Cadastro_Series.Interfaces
         void InserirEntidade();
 
         void ListarEntidade();
-        void VisualizarEntidade();
+        void SelecionarEntidade();
         void AtualizarEntidade();
         void ExcluirEntidade();
     }

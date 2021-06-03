@@ -5,6 +5,7 @@ namespace Cadastro_Series
     {
         Serie = 1,
         Filme = 2,
+        Temporada = 3,
         Episodio = 4
     }
 

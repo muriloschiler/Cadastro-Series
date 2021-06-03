@@ -1,12 +1,14 @@
 using System;
+using Cadastro_Series.Factorys;
 using Cadastro_Series.Interfaces;
 
 namespace Cadastro_Series
 {
     public class Serie : Entidade, ISerie
     {
-
+        public IController temporadaController = ControllerFactory.CreateController(ControllerType.Temporada);
         static int autoIncrementId = 1;
+        public static int numeroTemporadas = 0;
         private string genero { get; set; }
         public string GENERO
         {
@@ -43,6 +45,7 @@ namespace Cadastro_Series
             string texto = "";
             texto += $"Genero:{this.genero} {Environment.NewLine}";
             texto += $"Ano:{this.Ano} {Environment.NewLine}";
+            texto += $"Temporadas:{Serie.numeroTemporadas} {Environment.NewLine}";
             texto += $"{Environment.NewLine}";
             return texto;
         }

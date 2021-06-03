@@ -11,7 +11,8 @@ namespace Cadastro_Series.Factorys
             {
                 case ControllerType.Serie:
                     return new SerieController();
-
+                case ControllerType.Temporada:
+                    return new TemporadaController();
                 case ControllerType.Episodio:
                     return new EpisodioController();
                 default:

@@ -20,7 +20,7 @@ namespace Cadastro_Series
                 Console.WriteLine("2 : Inserir um novo Episodio ");
                 Console.WriteLine("3 : Editar um Episodio cadastrado ");
                 Console.WriteLine("4 : Exluir um Episodio cadastrado ");
-                Console.WriteLine("5 : Visualizar um Episodio especifico");
+                Console.WriteLine("5 : Selecionar um Episodio especifico");
                 Console.WriteLine("6 : Limpar tela");
                 Console.WriteLine("X : Sair de Episodios ");
                 string valor = Console.ReadLine().ToUpper();
@@ -60,7 +60,7 @@ namespace Cadastro_Series
             episodioRepositorio.Listar();
         }
 
-        public override void VisualizarEntidade()
+        public override void SelecionarEntidade()
         {
             Console.WriteLine("Selecione o metodo de busca: ");
             while (true)
