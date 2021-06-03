@@ -1,7 +1,8 @@
 using System;
+using Cadastro_Series.Interfaces;
 namespace Cadastro_Series
 {
-    public abstract class Etidade
+    public abstract class Entidade : IEntidade
     {
         protected int id { get; set; }
         public int Id

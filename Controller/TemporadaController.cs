@@ -1,10 +1,10 @@
 using System;
 namespace Cadastro_Series
 {
-    public class EpisodioController : ControllerAbstract
+    public class TemporadaController : ControllerAbstract
     {
-        private EpisodioRepositorio episodioRepositorio = new EpisodioRepositorio();
-        public EpisodioController() { }
+        private TemporadaRepositorio temporadaRepositorio = new TemporadaRepositorio();
+        public TemporadaController() { }
         public override void Run()
         {
             base.Run();
@@ -15,14 +15,14 @@ namespace Cadastro_Series
             while (true)
             {
                 Console.WriteLine("##############################");
-                Console.WriteLine("MENU Episodios ");
-                Console.WriteLine("1 : Listar Episodios cadastrados ");
-                Console.WriteLine("2 : Inserir um novo Episodio ");
-                Console.WriteLine("3 : Editar um Episodio cadastrado ");
-                Console.WriteLine("4 : Exluir um Episodio cadastrado ");
-                Console.WriteLine("5 : Visualizar um Episodio especifico");
+                Console.WriteLine("MENU Temporadas ");
+                Console.WriteLine("1 : Listar temporadas cadastradas ");
+                Console.WriteLine("2 : Inserir uma nova temporada ");
+                Console.WriteLine("3 : Editar uma temporada cadastrada ");
+                Console.WriteLine("4 : Exluir uma temporada cadastrada ");
+                Console.WriteLine("5 : Visualizar uma temporada especifica");
                 Console.WriteLine("6 : Limpar tela");
-                Console.WriteLine("X : Sair de Episodios ");
+                Console.WriteLine("X : Sair de temporada ");
                 string valor = Console.ReadLine().ToUpper();
 
                 if (valor == "X")
@@ -43,21 +43,21 @@ namespace Cadastro_Series
 
         public override void InserirEntidade()
         {
-            Console.WriteLine("Informe o titulo do Episodio");
+            Console.WriteLine("Informe o titulo da temporada");
             string titulo = Console.ReadLine();
-            Console.WriteLine("Informe a descricao do Episodio");
+            Console.WriteLine("Informe a descricao da temporada");
             string descricao = Console.ReadLine();
-            //Episodio episodio = new Episodio(titulo, descricao);
-            //episodioRepositorio.Inserir(episodio);
-            Console.WriteLine("Episodio inserido com sucesso!!!");
+            Temporada temporada = new Temporada(titulo, descricao, 0);
+            temporadaRepositorio.Inserir(temporada);
+            Console.WriteLine("Temporada inserida com sucesso!!!");
             Console.WriteLine($"{Environment.NewLine}");
-
         }
+
 
         public override void ListarEntidade()
         {
-            Console.WriteLine("EPISODIOS CADASTRADOS:");
-            episodioRepositorio.Listar();
+            Console.WriteLine("SERIES CADASTRADAS:");
+            temporadaRepositorio.Listar();
         }
 
         public override void VisualizarEntidade()
@@ -83,24 +83,24 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Informe o Id do episodio: ");
+                    Console.WriteLine("Informe o Id da temporada: ");
                     int id = int.Parse(Console.ReadLine());
-                    Episodio episodio = episodioRepositorio.RetornarPorId(id);
-                    if (episodio != null)
+                    Temporada temporada = temporadaRepositorio.RetornarPorId(id);
+                    if (temporada != null)
                     {
-                        Console.WriteLine("Episodio:");
-                        Console.WriteLine(episodio.toString());
+                        Console.WriteLine("Temporada:");
+                        Console.WriteLine(temporada.toString());
                         break;
                     }
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Informe o titulo do episodio: ");
-                    Episodio episodio = episodioRepositorio.RetornarPorTitulo(Console.ReadLine());
-                    if (episodio != null)
+                    Console.WriteLine("Informe o titulo da temporada: ");
+                    Temporada temporada = temporadaRepositorio.RetornarPorTitulo(Console.ReadLine());
+                    if (temporada != null)
                     {
-                        Console.WriteLine("Serie:");
-                        Console.WriteLine(episodio.toString());
+                        Console.WriteLine("Temporada:");
+                        Console.WriteLine(temporada.toString());
                         break;
                     }
                 }
@@ -113,11 +113,11 @@ namespace Cadastro_Series
         {
             Console.WriteLine("Metodos de busca: ");
             Console.WriteLine($"{Environment.NewLine}");
-            Episodio episodio = null;
+            Temporada temporada = null;
             while (true)
             {
-                Console.WriteLine("Selecionar episodio por Id: 1 ");
-                Console.WriteLine("Selecionar episodio por Titulo: 2 ");
+                Console.WriteLine("Selecionar temporada por Id: 1 ");
+                Console.WriteLine("Selecionar temporada por Titulo: 2 ");
                 Console.WriteLine("Voltar: 3");
                 string escolha = Console.ReadLine();
 
@@ -134,24 +134,24 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id do episodio: ");
+                    Console.WriteLine("Digite o Id da Temporada: ");
                     int buscaId = int.Parse(Console.ReadLine());
-                    episodio = episodioRepositorio.RetornarPorId(buscaId);
+                    temporada = temporadaRepositorio.RetornarPorId(buscaId);
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Digite o Titulo do episodio: ");
+                    Console.WriteLine("Digite o Titulo da Temporada: ");
                     string buscaTitulo = Console.ReadLine();
-                    episodio = episodioRepositorio.RetornarPorTitulo(buscaTitulo);
+                    temporada = temporadaRepositorio.RetornarPorTitulo(buscaTitulo);
                 }
                 break;
             }
 
-            if (episodio != null)
+            if (temporada != null)
             {
 
-                string titulo = episodio.Titulo;
-                string descricao = episodio.Descricao;
+                string titulo = temporada.Titulo;
+                string descricao = temporada.Descricao;
                 //MODIFICAR O TITULO
                 while (true)
                 {
@@ -186,7 +186,8 @@ namespace Cadastro_Series
                     }
                     Console.WriteLine("Por favor digite Y/N");
                 }
-                //episodioRepositorio.Atualizar(episodio, titulo, descricao);
+
+                temporadaRepositorio.Atualizar(temporada, titulo, descricao);
             }
 
         }
@@ -195,11 +196,11 @@ namespace Cadastro_Series
         {
             Console.WriteLine("Metodos de busca: ");
             Console.WriteLine($"{Environment.NewLine}");
-            Episodio episodio = null;
+            Temporada temporada = null;
             while (true)
             {
-                Console.WriteLine("Selecionar episodio por Id: 1 ");
-                Console.WriteLine("Selecionar episodio por Titulo: 2 ");
+                Console.WriteLine("Selecionar temporada por Id: 1 ");
+                Console.WriteLine("Selecionar temporada por Titulo: 2 ");
                 Console.WriteLine("Voltar: 3");
                 string escolha = Console.ReadLine();
 
@@ -216,24 +217,24 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id do episodio que sera excluido: ");
+                    Console.WriteLine("Digite o Id da Temporada que sera excluida: ");
                     int buscaId = int.Parse(Console.ReadLine());
-                    episodio = episodioRepositorio.RetornarPorId(buscaId);
-                    if (episodio != null)
+                    temporada = temporadaRepositorio.RetornarPorId(buscaId);
+                    if (temporada != null)
                     {
-                        episodioRepositorio.Excluir(episodio);
-                        Console.WriteLine("Episodio excluido!!");
+                        temporadaRepositorio.Excluir(temporada);
+                        Console.WriteLine("Temporada excluida!!");
                     }
                 }
                 if (escolhaInt == 2)
                 {
-                    Console.WriteLine("Digite o Titulo do episodio que sera excluido: ");
+                    Console.WriteLine("Digite o Titulo da Temporada que sera excluida: ");
                     string buscaTitulo = Console.ReadLine();
-                    episodio = episodioRepositorio.RetornarPorTitulo(buscaTitulo);
-                    if (episodio != null)
+                    temporada = temporadaRepositorio.RetornarPorTitulo(buscaTitulo);
+                    if (temporada != null)
                     {
-                        episodioRepositorio.Excluir(episodio);
-                        Console.WriteLine("Episodio excluida!!");
+                        temporadaRepositorio.Excluir(temporada);
+                        Console.WriteLine("Temporada excluida!!");
                     }
                 }
                 break;

@@ -14,8 +14,6 @@ namespace Cadastro_Series.Factorys
 
                 case ControllerType.Episodio:
                     return new EpisodioController();
-
-
                 default:
                     throw new ArgumentOutOfRangeException();
             }

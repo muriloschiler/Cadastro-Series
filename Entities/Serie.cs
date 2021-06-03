@@ -1,8 +1,9 @@
 using System;
+using Cadastro_Series.Interfaces;
 
 namespace Cadastro_Series
 {
-    public class Serie : Etidade
+    public class Serie : Entidade, ISerie
     {
 
         static int autoIncrementId = 1;
@@ -12,7 +13,7 @@ namespace Cadastro_Series
             get { return this.genero; }
         }
 
-        protected string ano { get; set; }
+        private string ano { get; set; }
         public string Ano
         {
             get { return this.ano; }

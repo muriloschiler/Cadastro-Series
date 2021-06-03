@@ -6,9 +6,9 @@ namespace Cadastro_Series
     class EpisodioRepositorio : IEpisodioRepositorio
     {
         private List<Episodio> listaEpisodio = new List<Episodio>();
-        public void Atualizar(Episodio episodio, string titulo, string descricao)
+        public void Atualizar(Episodio episodio, string titulo, string descricao, Temporada temporada)
         {
-            episodio.Atualizar(titulo, descricao);
+            episodio.Atualizar(titulo, descricao, temporada);
         }
 
         public void Excluir(Episodio episodio)
@@ -16,9 +16,10 @@ namespace Cadastro_Series
             listaEpisodio.Remove(episodio);
         }
 
-        public void Inserir(Episodio episodio)
+        public void Inserir(Episodio episodio, Temporada temporada)
         {
             listaEpisodio.Add(episodio);
+            ++temporada.NumeroEpisodios;
         }
 
         public void Listar()
