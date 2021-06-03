@@ -16,7 +16,6 @@ namespace Cadastro_Series
         {
             while (true)
             {
-                Console.WriteLine("##############################");
                 Console.WriteLine("MENU Series ");
                 Console.WriteLine("1 : Listar Series cadastradas ");
                 Console.WriteLine("2 : Inserir uma nova Serie ");
@@ -103,9 +102,11 @@ namespace Cadastro_Series
                     Serie serie = serieRepositorio.RetornarPorId(id);
                     if (serie != null)
                     {
+                        Console.Clear();
                         Console.WriteLine("Serie:");
                         Console.WriteLine(serie.toString());
                         Console.WriteLine("Deseja acessar suas temporadas ?");
+                        Console.WriteLine("S/N");
                         if (Console.ReadLine().ToUpper() == "S")
                         {
                             serie.temporadaController.Run();
@@ -118,9 +119,11 @@ namespace Cadastro_Series
                     Serie serie = serieRepositorio.RetornarPorTitulo(Console.ReadLine());
                     if (serie != null)
                     {
+                        Console.Clear();
                         Console.WriteLine("Serie:");
                         Console.WriteLine(serie.toString());
                         Console.WriteLine("Deseja acessar suas temporadas ?");
+                        Console.WriteLine("S/N");
                         if (Console.ReadLine().ToUpper() == "S")
                         {
                             serie.temporadaController.Run();
@@ -154,6 +157,7 @@ namespace Cadastro_Series
                 }
 
                 //Decidindo qual metodo de busca sera utilizado
+                Console.Clear();
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
@@ -180,9 +184,11 @@ namespace Cadastro_Series
                 //MODIFICAR O TITULO
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar o titulo? Y/N: ");
+                    Console.Clear();
+                    Console.WriteLine("Deseja atualizar o titulo?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Console.WriteLine("Digite o novo titulo: ");
                         titulo = Console.ReadLine();
@@ -192,14 +198,15 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
                 //MODIFICAR A DESCRICAO
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar a descricao? Y/N: ");
+                    Console.WriteLine("Deseja atualizar a descricao?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Console.WriteLine("Digite a nova descricao: ");
                         descricao = Console.ReadLine();
@@ -209,14 +216,15 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
                 //MODIFICAR O ANO
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar o ano? Y/N: ");
+                    Console.WriteLine("Deseja atualizar o ano?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Console.WriteLine("Digite o novo ano: ");
                         descricao = Console.ReadLine();
@@ -226,15 +234,16 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
                 //MODIFICAR O GENERO    
                 string generoTemp = "";
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar o genero? Y/N: ");
+                    Console.WriteLine("Deseja atualizar o genero?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Genero.ListarGenero();
                         generoTemp = Console.ReadLine();
@@ -249,8 +258,10 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
+                Console.Clear();
+                Console.WriteLine("Serie atualizada com sucesso!");
                 serieRepositorio.Atualizar(serie, titulo, descricao, ano, genero);
             }
 

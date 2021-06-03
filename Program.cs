@@ -10,27 +10,9 @@ namespace Cadastro_Series
             try
             {
                 IController serieController = ControllerFactory.CreateController(ControllerType.Serie);
-
-                Console.WriteLine("Seja bem vindo a plataforma de Series e Filmes");
-                while (true)
-                {
-                    Console.WriteLine("Selecione o modo de navegacao:");
-                    Console.WriteLine("Series: 1");
-                    Console.WriteLine("Filmes: 2");
-                    Console.WriteLine("Sair: x");
-                    string escolha = Console.ReadLine();
-                    if (escolha.ToUpper() == "X")
-                        break;
-                    if (int.TryParse(escolha, out int resultado) &&
-                        int.Parse(escolha) <= 2 &&
-                        int.Parse(escolha) >= 1)
-                    {
-                        if (resultado == 1)
-                            serieController.Run();
-                        continue;
-                    }
-                    Console.WriteLine("Por Favor selecione dentre as opcoes disponiveis ");
-                }
+                Console.WriteLine($"{Environment.NewLine}");
+                Console.WriteLine("Seja bem vindo a plataforma de Series");
+                serieController.Run();
             }
             catch (Exception e)
             {

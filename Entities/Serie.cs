@@ -36,7 +36,7 @@ namespace Cadastro_Series
             this.titulo = titulo;
             this.descricao = descricao;
             this.ano = ano;
-            this.genero = genero;
+            this.genero = Genero.RetornarGenero(genero);
         }
 
         public override string toString()

@@ -88,6 +88,7 @@ namespace Cadastro_Series
                     Episodio episodio = episodioRepositorio.RetornarPorId(id);
                     if (episodio != null)
                     {
+                        Console.Clear();
                         Console.WriteLine("Episodio:");
                         Console.WriteLine(episodio.toString());
                         break;
@@ -99,6 +100,7 @@ namespace Cadastro_Series
                     Episodio episodio = episodioRepositorio.RetornarPorTitulo(Console.ReadLine());
                     if (episodio != null)
                     {
+                        Console.Clear();
                         Console.WriteLine("Serie:");
                         Console.WriteLine(episodio.toString());
                         break;
@@ -131,6 +133,7 @@ namespace Cadastro_Series
                 }
 
                 //Decidindo qual metodo de busca sera utilizado
+                Console.Clear();
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
@@ -155,9 +158,11 @@ namespace Cadastro_Series
                 //MODIFICAR O TITULO
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar o titulo? Y/N: ");
+                    Console.Clear();
+                    Console.WriteLine("Deseja atualizar o titulo?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Console.WriteLine("Digite o novo titulo: ");
                         titulo = Console.ReadLine();
@@ -167,14 +172,15 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
                 //MODIFICAR A DESCRICAO
                 while (true)
                 {
-                    Console.WriteLine("Deseja atualizar a descricao? Y/N: ");
+                    Console.WriteLine("Deseja atualizar a descricao?: ");
+                    Console.WriteLine("S/N");
                     string decisao = Console.ReadLine();
-                    if (decisao.ToUpper() == "Y")
+                    if (decisao.ToUpper() == "S")
                     {
                         Console.WriteLine("Digite a nova descricao: ");
                         descricao = Console.ReadLine();
@@ -184,8 +190,10 @@ namespace Cadastro_Series
                     {
                         break;
                     }
-                    Console.WriteLine("Por favor digite Y/N");
+                    Console.WriteLine("Por favor digite S/N");
                 }
+                Console.Clear();
+                Console.WriteLine("Episodio atualizado com sucesso!");
                 episodioRepositorio.Atualizar(episodio, titulo, descricao);
             }
 
