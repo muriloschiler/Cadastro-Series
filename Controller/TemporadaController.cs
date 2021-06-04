@@ -71,8 +71,12 @@ namespace Cadastro_Series
                 string escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
@@ -83,15 +87,26 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Informe o Id da temporada: ");
-                    int id = int.Parse(Console.ReadLine());
-                    Temporada temporada = temporadaRepositorio.RetornarPorId(id);
+                    Temporada temporada = null;
+                    while (true)
+                    {
+                        Console.WriteLine("Informe o Id da temporada: ");
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Por favor digite um id valido");
+                            continue;
+                        }
+                        temporada = temporadaRepositorio.RetornarPorId(id);
+                        break;
+                    }
+
                     if (temporada != null)
                     {
                         Console.Clear();
                         Console.WriteLine("Temporada:");
                         Console.WriteLine(temporada.toString());
                         Console.WriteLine("Deseja acessar seus episodios ?");
+                        Console.WriteLine("S/N");
                         if (Console.ReadLine().ToUpper() == "S")
                         {
                             temporada.episodioController.Run();
@@ -108,12 +123,14 @@ namespace Cadastro_Series
                         Console.WriteLine("Temporada:");
                         Console.WriteLine(temporada.toString());
                         Console.WriteLine("Deseja acessar seus episodios ?");
+                        Console.WriteLine("S/N");
                         if (Console.ReadLine().ToUpper() == "S")
                         {
                             temporada.episodioController.Run();
                         }
                     }
                 }
+
                 break;
             }
 
@@ -132,8 +149,12 @@ namespace Cadastro_Series
                 string escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
@@ -145,10 +166,21 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id da Temporada: ");
-                    int buscaId = int.Parse(Console.ReadLine());
-                    temporada = temporadaRepositorio.RetornarPorId(buscaId);
+                    while (true)
+                    {
+                        Console.WriteLine("Digite o Id da Temporada: ");
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Por favor digite um id valido");
+                            continue;
+                        }
+                        temporada = temporadaRepositorio.RetornarPorId(id);
+                        break;
+                    }
                 }
+
+
+
                 if (escolhaInt == 2)
                 {
                     Console.WriteLine("Digite o Titulo da Temporada: ");
@@ -256,6 +288,9 @@ namespace Cadastro_Series
             }
         }
 
-
+        public override int RetornarTamanho()
+        {
+            return this.temporadaRepositorio.RetornarTamanho();
+        }
     }
 }

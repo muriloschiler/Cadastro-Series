@@ -7,19 +7,12 @@ namespace Cadastro_Series
     {
         public IController episodioController = ControllerFactory.CreateController(ControllerType.Episodio);
         static int autoIncrementId = 1;
-        private int numeroEpisodios;
-        public int NumeroEpisodios
-        {
-            get { return this.numeroEpisodios; }
-            set { this.numeroEpisodios = value; }
-        }
 
         public Temporada(string titulo, string descricao)
         {
             this.id = autoIncrementId;
             this.titulo = titulo;
             this.descricao = descricao;
-            ++Serie.numeroTemporadas;
             ++autoIncrementId;
         }
 
@@ -33,7 +26,7 @@ namespace Cadastro_Series
         {
             base.toString();
             string texto = "";
-            texto += $"Numero de episodios:{this.numeroEpisodios}";
+            texto += $"Episodios:{episodioController.RetornarTamanho()} {Environment.NewLine}";
             texto += $"{Environment.NewLine}";
             return texto;
         }

@@ -77,62 +77,78 @@ namespace Cadastro_Series
         public override void SelecionarEntidade()
         {
             Console.WriteLine("Selecione o metodo de busca: ");
+            string escolha = "";
             while (true)
+
             {
                 Console.WriteLine("Pesquisar por Id: 1 ");
                 Console.WriteLine("Pesquisar por Titulo: 2 ");
                 Console.WriteLine("Voltar: 3");
-                string escolha = Console.ReadLine();
+                escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
                     continue;
                 }
-
-                //Decidindo qual metodo de busca sera utilizado
-                int escolhaInt = int.Parse(escolha);
-                if (escolhaInt == 1)
-                {
-                    Console.WriteLine("Informe o Id da serie: ");
-                    int id = int.Parse(Console.ReadLine());
-                    Serie serie = serieRepositorio.RetornarPorId(id);
-                    if (serie != null)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Serie:");
-                        Console.WriteLine(serie.toString());
-                        Console.WriteLine("Deseja acessar suas temporadas ?");
-                        Console.WriteLine("S/N");
-                        if (Console.ReadLine().ToUpper() == "S")
-                        {
-                            serie.temporadaController.Run();
-                        }
-                    }
-                }
-                if (escolhaInt == 2)
-                {
-                    Console.WriteLine("Informe o titulo da serie: ");
-                    Serie serie = serieRepositorio.RetornarPorTitulo(Console.ReadLine());
-                    if (serie != null)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Serie:");
-                        Console.WriteLine(serie.toString());
-                        Console.WriteLine("Deseja acessar suas temporadas ?");
-                        Console.WriteLine("S/N");
-                        if (Console.ReadLine().ToUpper() == "S")
-                        {
-                            serie.temporadaController.Run();
-                        }
-                    }
-                }
                 break;
             }
+            //Decidindo qual metodo de busca sera utilizado
+            int escolhaInt = int.Parse(escolha);
+            if (escolhaInt == 1)
+            {
+                Serie serie = null;
+                while (true)
+                {
+                    Console.WriteLine("Informe o Id da serie: ");
+                    if (!int.TryParse(Console.ReadLine(), out int id))
+                    {
+                        Console.WriteLine("Por favor digite um id valido");
+                        continue;
+                    }
+                    serie = serieRepositorio.RetornarPorId(id);
+                    break;
+                }
 
+                if (serie != null)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Serie:");
+                    Console.WriteLine(serie.toString());
+                    Console.WriteLine("Deseja acessar suas temporadas ?");
+                    Console.WriteLine("S/N");
+                    if (Console.ReadLine().ToUpper() == "S")
+                    {
+                        serie.temporadaController.Run();
+                    }
+                }
+
+
+            }
+            if (escolhaInt == 2)
+            {
+                Console.WriteLine("Informe o titulo da serie: ");
+                Serie serie = serieRepositorio.RetornarPorTitulo(Console.ReadLine());
+                if (serie != null)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Serie:");
+                    Console.WriteLine(serie.toString());
+                    Console.WriteLine("Deseja acessar suas temporadas ?");
+                    Console.WriteLine("S/N");
+                    if (Console.ReadLine().ToUpper() == "S")
+                    {
+                        serie.temporadaController.Run();
+                    }
+                }
+            }
         }
 
         public override void AtualizarEntidade()
@@ -148,8 +164,12 @@ namespace Cadastro_Series
                 string escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
@@ -161,9 +181,17 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id da Serie: ");
-                    int buscaId = int.Parse(Console.ReadLine());
-                    serie = serieRepositorio.RetornarPorId(buscaId);
+                    while (true)
+                    {
+                        Console.WriteLine("Digite o Id da Serie: ");
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Por favor digite um id valido");
+                            continue;
+                        }
+                        serie = serieRepositorio.RetornarPorId(id);
+                        break;
+                    }
                 }
                 if (escolhaInt == 2)
                 {
@@ -171,6 +199,7 @@ namespace Cadastro_Series
                     string buscaTitulo = Console.ReadLine();
                     serie = serieRepositorio.RetornarPorTitulo(buscaTitulo);
                 }
+
                 break;
             }
 
@@ -314,6 +343,11 @@ namespace Cadastro_Series
                 }
                 break;
             }
+        }
+
+        public override int RetornarTamanho()
+        {
+            return this.serieRepositorio.RetornarTamanho();
         }
     }
 

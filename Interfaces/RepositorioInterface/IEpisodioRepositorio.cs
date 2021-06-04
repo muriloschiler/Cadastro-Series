@@ -4,5 +4,6 @@ namespace Cadastro_Series.Interfaces
     {
         void Inserir(Episodio episodio);
         void Atualizar(Episodio entidade, string titulo, string descricao);
+        int RetornarTamanho();
     }
 }

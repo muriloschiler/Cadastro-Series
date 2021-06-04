@@ -10,5 +10,6 @@ namespace Cadastro_Series.Interfaces
         void SelecionarEntidade();
         void AtualizarEntidade();
         void ExcluirEntidade();
+        int RetornarTamanho();
     }
 }

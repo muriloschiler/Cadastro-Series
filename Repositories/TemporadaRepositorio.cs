@@ -56,5 +56,10 @@ namespace Cadastro_Series
             Console.WriteLine("Titulo nao encontrado");
             return null;
         }
+
+        public int RetornarTamanho()
+        {
+            return this.listaTemporada.Count;
+        }
     }
 }

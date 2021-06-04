@@ -58,5 +58,10 @@ namespace Cadastro_Series
         {
             throw new NotImplementedException();
         }
+
+        public virtual int RetornarTamanho()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

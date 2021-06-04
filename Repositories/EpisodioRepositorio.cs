@@ -55,6 +55,11 @@ namespace Cadastro_Series
             return null;
         }
 
+
+        public int RetornarTamanho()
+        {
+            return this.listaEpisodio.Count;
+        }
     }
 
 }

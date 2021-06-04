@@ -14,7 +14,6 @@ namespace Cadastro_Series
         {
             while (true)
             {
-                Console.WriteLine("##############################");
                 Console.WriteLine("MENU Episodios ");
                 Console.WriteLine("1 : Listar Episodios cadastrados ");
                 Console.WriteLine("2 : Inserir um novo Episodio ");
@@ -71,8 +70,12 @@ namespace Cadastro_Series
                 string escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
@@ -83,16 +86,26 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Informe o Id do episodio: ");
-                    int id = int.Parse(Console.ReadLine());
-                    Episodio episodio = episodioRepositorio.RetornarPorId(id);
+                    Episodio episodio = null;
+                    while (true)
+                    {
+                        Console.WriteLine("Informe o Id do episodio: ");
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Por favor digite um id valido");
+                            continue;
+                        }
+                        episodio = episodioRepositorio.RetornarPorId(id);
+                        break;
+                    }
                     if (episodio != null)
                     {
                         Console.Clear();
                         Console.WriteLine("Episodio:");
                         Console.WriteLine(episodio.toString());
-                        break;
+
                     }
+
                 }
                 if (escolhaInt == 2)
                 {
@@ -101,9 +114,9 @@ namespace Cadastro_Series
                     if (episodio != null)
                     {
                         Console.Clear();
-                        Console.WriteLine("Serie:");
+                        Console.WriteLine("Episodio:");
                         Console.WriteLine(episodio.toString());
-                        break;
+
                     }
                 }
                 break;
@@ -124,8 +137,12 @@ namespace Cadastro_Series
                 string escolha = Console.ReadLine();
 
                 //Verificando a entrada do usuario
-                if (!int.TryParse(escolha, out int resultado)
-                    | int.Parse(escolha) > 3
+                if (!int.TryParse(escolha, out int resultado))
+                {
+                    Console.WriteLine("Por favor digite uma opcoes abaixo: ");
+                    continue;
+                }
+                if (int.Parse(escolha) > 3
                     | int.Parse(escolha) < 1)
                 {
                     Console.WriteLine("Por favor digite uma opcoes abaixo: ");
@@ -137,9 +154,18 @@ namespace Cadastro_Series
                 int escolhaInt = int.Parse(escolha);
                 if (escolhaInt == 1)
                 {
-                    Console.WriteLine("Digite o Id do episodio: ");
-                    int buscaId = int.Parse(Console.ReadLine());
-                    episodio = episodioRepositorio.RetornarPorId(buscaId);
+                    while (true)
+                    {
+                        Console.WriteLine("Digite o Id do episodio: ");
+                        if (!int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            Console.WriteLine("Por favor digite um id valido");
+                            continue;
+                        }
+                        episodio = episodioRepositorio.RetornarPorId(id);
+                        break;
+                    }
+
                 }
                 if (escolhaInt == 2)
                 {
@@ -248,6 +274,9 @@ namespace Cadastro_Series
             }
         }
 
-
+        public override int RetornarTamanho()
+        {
+            return this.episodioRepositorio.RetornarTamanho();
+        }
     }
 }
